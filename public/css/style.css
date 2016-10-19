@@ -1,0 +1,115 @@
+body{
+  font-variant: small-caps;
+  background-url: http://api.thumbr.it/whitenoise-361x370.png?background=4ea6caff&noise=626262&density=15&opacity=15
+}
+
+.listComponent{
+  width: 1000px;
+  background: #4B5F5F;
+  position: relative;
+  margin: 0 auto;
+  overflow: auto;
+  -webkit-box-shadow: 0px 0px 46px -1px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 46px -1px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 46px -1px rgba(0,0,0,0.38);
+  border-radius: 3px;
+}
+span.sortable{
+  cursor: pointer;
+}
+span.sortable:after{
+  content:'\021AD';
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 50px;
+}
+
+span.sortable[data-sort=false]:after{
+  content: '\02191';
+  
+}
+span.sortable[data-sort=true]:after{
+  content: '\02193';
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 50px;
+}
+#header{
+	background: #212121;
+	color: white;
+	padding-right: 18px;
+	box-sizing: border-box;
+}
+.ruler{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom:0px;
+}
+
+#head{
+	position: relative;
+}
+#head #rest{
+	position: absolute;
+  width: 100%;
+  bottom: 0px;
+}
+.wrapper{
+  width: 100%;
+  color:white;
+  position: relative;
+  margin: 0;
+  height: 400px;
+  overflow: auto;
+  outline: 1px solid black;
+}
+.item{
+	width: 100%;
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  box-sizing: border-box;
+	
+}
+.item.centered{
+  text-align: center;
+  height: 400px;
+  line-height: 400px;
+
+}
+.item span{
+	position: relative;
+  display: inline-block;
+}
+.item span:nth-child(1){
+	width: 7%;
+}
+.item span:nth-child(2){
+	width: 18%;
+}
+.item span:nth-child(3){
+	width: 3%;
+}
+.item span:nth-child(4){
+	width: 33%;
+}
+.item span:nth-child(5){
+	width: 27%;
+}
+.item span:nth-child(6){
+	width: 10%;
+}
+.filters{
+  padding: 10px;
+  color: white;
+  background-color: #617B7B;
+}
+
+.filters div{
+  margin: 10px 20px;
+
+}
