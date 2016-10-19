@@ -30,6 +30,6 @@ To start application type:
 
 ``` npm start ```
 
-then go to 
+then go to: 
 
-```http://localhost:8006/```
+``` http://localhost:8006/ ```
