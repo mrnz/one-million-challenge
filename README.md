@@ -10,7 +10,7 @@ Vanilla JavaScript solution
 2. Display a scrollable list of all one million books
 3. Add any or all of the following functionality
 ⋅⋅* Sort by Book Name
-⋅⋅* Sort By Author Name
+* Sort By Author Name
 ⋅⋅* Filter By Book Genre
 ⋅⋅* Filter By Author Gender
 ⋅⋅* Indicate books in the "horror" genre, published on Halloween
