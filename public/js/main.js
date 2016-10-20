@@ -100,7 +100,6 @@ var Controll = function() {
 
 }
 
-var controll = new Controll();
 
 var tableAPI = (function() {
 
@@ -187,7 +186,8 @@ var tableAPI = (function() {
 		  res.push(list[map[i].index]);
 		}
 
-		
+		console.timeEnd('sorting');
+
 		result = res;
 			
 		if( totalItems === 0 ){
@@ -336,7 +336,7 @@ var tableAPI = (function() {
 		setHeadHeight( headHeight );
 		
 		if( headHeight > 0 ){
-			/* if Head is has some height generate additional rows in it  */
+			/* if Head has some height generate additional rows in it  */
 			generateRows( firstIndex - 20 , 20, rest );	
 		} 
 		

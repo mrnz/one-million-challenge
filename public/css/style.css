@@ -73,7 +73,6 @@ span.sortable[data-sort=true]:after{
   line-height: 30px;
   padding: 0 10px;
   box-sizing: border-box;
-	
 }
 .item.centered{
   text-align: center;
@@ -84,6 +83,9 @@ span.sortable[data-sort=true]:after{
 .item span{
 	position: relative;
   display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100%;  
 }
 .item span:nth-child(1){
 	width: 7%;
