@@ -341,9 +341,12 @@ var tableAPI = (function() {
 		/* generate rows in a center */
 		if( lastSet ){
 			generateRows( firstIndex, itemsLeft, center );
-		}else if( itemsLeft !== itemInSet){
+		
+		
 
 		}else{
+
+
 			generateRows( firstIndex, itemInSet, center );
 		}
 		
