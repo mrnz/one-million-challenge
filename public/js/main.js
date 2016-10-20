@@ -47,7 +47,6 @@ var Controll = class {
           wl = window.location,
           url = 'http://' + wl.hostname + ':' + wl.port + '/api/generateBooks/' + amount;
 
-
       request.open("GET", url, true);
       
       request.onreadystatechange = () => {
@@ -267,7 +266,8 @@ var Controll = class {
 
         setHeadHeight( 0 );
         setTailHeight( 0 );
-        center.innerHTML = '<div class="item centered"> No results </div>';
+        center.innerHTML = '<div class="item item-centered"> No results </div>';
+        
       };
 
       generateRows = ( firstIndex, amount, whereToInsert ) => {
@@ -465,7 +465,7 @@ var Controll = class {
         tableAPI.start( response );
         
         handles.startButton.disabled = false;
-        handles.startButton.innerText = "Generate table";
+        handles.startButton.innerText = "Generate";
 
       };
 
