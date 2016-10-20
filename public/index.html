@@ -114,7 +114,16 @@
 	</div>
 	<script src="js/main.js"></script>
 	<script>
-		var controll = new Controll();
+
+		var handles = {
+			filterGenre : "filterGenre",
+			filterGender : "filterGender",
+			filterHalloween : "halloween",
+			filterFinance : "finance",
+			sortAuthor : "authorNameHeader",
+			sortTitle : "titleHeader"
+		}
+		var controll = new Controll(handles);
 	</script>
 </body>
 </html>

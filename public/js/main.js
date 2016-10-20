@@ -1,25 +1,37 @@
 /* Get data form server */
-var Controll = function() {
+var Controll = function(handlesObject) {
 	
 	/* sorting private variables */
 	var nameSort = false,
 			titleSort = false,
-			resetFilters;
+			resetFilters,
+			resetSortIcons,	
+			/* handles */
+			handles = {
+				filterGenre : handlesObject.filterGenre,
+				filterGender : handlesObject.filterGender,
+				filterHalloween : handlesObject.filterHalloween,
+				filterFinance : handlesObject.filterFinance,
+				sortAuthor : handlesObject.sortAuthor,
+				sortTitle : handlesObject.sortTitle
+			}
 
 	resetFilters = () => {
-		document.getElementById( 'filterGenre' ).selectedIndex = 0;
-		document.getElementById( 'filterGender' ).selectedIndex = 0;
-		document.getElementById( 'halloween' ).checked = false;
-		document.getElementById( 'finance' ).checked = false;
-		document.getElementById( 'authorNameHeader' ).removeAttribute( 'data-sort' );
-		document.getElementById( 'titleHeader' ).removeAttribute( 'data-sort' );
+		document.getElementById( handles.filterGenre ).selectedIndex = 0;
+		document.getElementById( handles.filterGender ).selectedIndex = 0;
+		document.getElementById( handles.filterHalloween ).checked = false;
+		document.getElementById( handles.filterFinance ).checked = false;
+	};
+
+	resetSortIcons = () => {
+		document.getElementById( handles.sortAuthor ).removeAttribute( 'data-sort' );
+		document.getElementById( handles.sortTitle ).removeAttribute( 'data-sort' );
 	};
 
 	/* SORT */
 	this.sort = ( fieldName, elementID ) => {
 	
-		document.getElementById( 'authorNameHeader' ).removeAttribute( 'data-sort' );
-		document.getElementById( 'titleHeader' ).removeAttribute( 'data-sort' );
+		resetSortIcons();
 
 		var elem = document.getElementById( elementID );
 
@@ -40,8 +52,8 @@ var Controll = function() {
 	/* FILTER */
 	this.filter = ( element ) => {
 
-		var fieldName = element.name;
-		var fieldValue = element.options[ element.selectedIndex ].text; 
+		var fieldName = element.name,
+				fieldValue = element.options[ element.selectedIndex ].text; 
 
 		if(fieldValue === 'All results')fieldValue = null
 
@@ -72,7 +84,8 @@ var Controll = function() {
 				btn = document.getElementById('requestData');
 
 		resetFilters()
-
+		resetSortIcons();
+		
 		changeButtonState = ( disable ) => {
 			btn.disabled = disable;
 			btn.innerText = disable ? "Loading ..." : "Generate table"
