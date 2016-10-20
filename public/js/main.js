@@ -325,8 +325,10 @@ var tableAPI = (function() {
 		var firstIndex = ( actualSetNumber - 1 ) * itemInSet,
 		 		headHeight = ( actualSetNumber - 1 ) * itemInSet * itemHeight,
 				tailheight = listTotlaHeight - actualSetNumber  * itemHeight * itemInSet,
-				itemsLeft = result.length % itemInSet === 0 ? itemInSet : result.length % itemInSet;
-				
+				itemsLeft = result.length % itemInSet === 0 ? itemInSet : result.length % itemInSet,
+				firstSet = actualSetNumber === 1,
+				itemsAmmountToRenderInFirstSet = result.length < itemInSet ? result.length : itemInSet;
+		
 		if( lastSet ){
 			tailheight = 0;
 		}
@@ -339,18 +341,15 @@ var tableAPI = (function() {
 		} 
 		
 		/* generate rows in a center */
+		
 		if( lastSet ){
 			generateRows( firstIndex, itemsLeft, center );
-		
-		
-
+		}else if( firstSet ){
+			generateRows( firstIndex, itemsAmmountToRenderInFirstSet, center );
 		}else{
-
-
 			generateRows( firstIndex, itemInSet, center );
 		}
 		
-
 		setTailHeight( tailheight );
 
 	};/* GENERATOR END */
