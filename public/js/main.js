@@ -215,7 +215,7 @@ var tableAPI = (function() {
 		newResult = filter.memo.allresult.filter( val => {
 			return filter.conditions.genre(val) && filter.conditions.gender(val) && filter.conditions.halloween(val) && filter.conditions.finance(val); 
 		});
-		
+
 		init( newResult );
 
 	};
@@ -301,8 +301,9 @@ var tableAPI = (function() {
 	generateRows = ( firstIndex, amount, whereToInsert ) => {
 
 		var html = '';
+
 		Array( amount ).fill().forEach( ( x, idx )=>{
-				
+			
 			var idx = idx + firstIndex,
 					authorName = result[idx].author.name;
 					authorGender = result[idx].author.gender;
@@ -321,7 +322,7 @@ var tableAPI = (function() {
 
 	generateDOM = ( lastSet ) => {
 		
-		var firstIndex = ( actualSetNumber - 1 ) * itemInSet;
+		var firstIndex = ( actualSetNumber - 1 ) * itemInSet,
 		 		headHeight = ( actualSetNumber - 1 ) * itemInSet * itemHeight,
 				tailheight = listTotlaHeight - actualSetNumber  * itemHeight * itemInSet,
 				itemsLeft = result.length % itemInSet === 0 ? itemInSet : result.length % itemInSet;
@@ -340,6 +341,8 @@ var tableAPI = (function() {
 		/* generate rows in a center */
 		if( lastSet ){
 			generateRows( firstIndex, itemsLeft, center );
+		}else if( itemsLeft !== itemInSet){
+
 		}else{
 			generateRows( firstIndex, itemInSet, center );
 		}
@@ -360,7 +363,7 @@ var tableAPI = (function() {
 		wrapper.scrollTop = 0;
 		center.inerHTML = '';
 		rest.inerHTML = '';	
-
+		actualSetNumber = 1;
 		result = dataSet;
 		totalItems = dataSet.length;
 		listTotlaHeight = totalItems * itemHeight;
