@@ -8,8 +8,11 @@ app.use('/api', router);
 app.use(express.static(__dirname + "/public")); 
 
 router.get('/generateBooks/:amount',function(req, res, next){
-  var amount = parseInt(req.params.amount);
+  
+  var amount = parseInt( Math.abs(req.params.amount) );
+  amount = isNaN( amount ) ? 0 : amount;
   res.json( generateList( amount ) );
+  
 });
 
 app.listen( port, () => console.info('App is listening quietly on port '+ port) );
