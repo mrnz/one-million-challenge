@@ -16,7 +16,7 @@
 				<h1>List created by Przemek Marciniak</h1>
 			</div>
 			<div>
-				<button id="requestData" onclick="controll.requestData('itemsAmount')">Generate</button> 
+				<button id="requestData" onclick="controll.requestData()">Generate</button> 
 				<span>table with</span>
 				<input type="text" value="1943" id="itemsAmount">
 				<span>element(s)</span>			
@@ -53,7 +53,7 @@
 		
 			<div>
 				<label for="genre">Filter Genre</label>
-				<select onChange="controll.filter(this)" name="genre" id="filterGenre">
+				<select onChange="controll.filter( this.name, this.options[ this.selectedIndex ].text)" name="genre" id="filterGenre">
 					<option value="" selected>All results</option>
 					<option value="">Science fiction</option>
 					<option value="">Satire</option>
@@ -92,7 +92,7 @@
 
 			<div>
 				<label for="gender">Filter Gender</label>
-				<select onChange="controll.filter(this)" name="gender" id="filterGender">
+				<select onChange="controll.filter( this.name, this.options[ this.selectedIndex ].text)" name="gender" id="filterGender">
 					<option value="all" selected>All results</option>
 					<option value="F">M</option>
 					<option value="M">F</option>
@@ -101,12 +101,12 @@
 
 			<div>
 				<label for="">Indicate books in the "horror" genre, published on Halloween </label>
-				<input type="checkbox" name="" id="halloween" onclick="controll.specialEvents('halloween', this.checked)">
+				<input type="checkbox" name="halloween" id="halloween" onclick="controll.specialEvents( this.name, this.checked )">
 			</div>
 			
 			<div>
 				<label for="">Indicate books in the "finance" genre, published on the last Friday of any month </label>
-				<input type="checkbox" name="" id="finance" onclick="controll.specialEvents('finance', this.checked)">
+				<input type="checkbox" name="finance" id="finance" onclick="controll.specialEvents( this.name, this.checked )">
 			</div>
 		
 		</div>
@@ -116,6 +116,8 @@
 	<script>
 
 		var handles = {
+			startButton: "requestData",
+			itemsAmount: "itemsAmount",
 			filterGenre : "filterGenre",
 			filterGender : "filterGender",
 			filterHalloween : "halloween",
@@ -123,7 +125,9 @@
 			sortAuthor : "authorNameHeader",
 			sortTitle : "titleHeader"
 		}
-		var controll = new Controll(handles);
+		
+		var controll = new Controll( handles );
+
 	</script>
 </body>
 </html>
