@@ -1,13 +1,12 @@
 body{
   font-variant: small-caps;
-  background-url: http://api.thumbr.it/whitenoise-361x370.png?background=4ea6caff&noise=626262&density=15&opacity=15
 }
 
 .listComponent{
   width: 1000px;
   background: #4B5F5F;
   position: relative;
-  margin: 0 auto;
+  margin: 50px auto;
   overflow: auto;
   -webkit-box-shadow: 0px 0px 46px -1px rgba(0,0,0,0.38);
   -moz-box-shadow: 0px 0px 46px -1px rgba(0,0,0,0.38);
