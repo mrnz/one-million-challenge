@@ -355,7 +355,12 @@ var tableAPI = (function() {
 
 	/* INIT */
 	init = (dataSet) => {
-		
+
+		/* restart wrapper */
+		wrapper.scrollTop = 0;
+		center.inerHTML = '';
+		rest.inerHTML = '';	
+
 		result = dataSet;
 		totalItems = dataSet.length;
 		listTotlaHeight = totalItems * itemHeight;
