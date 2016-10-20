@@ -13,6 +13,9 @@
   color: white;
   padding-right: 18px;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .millionTable .millionTable-header .sortable{
   cursor: pointer;
@@ -38,6 +41,9 @@
   height: 400px;
   overflow: auto;
   outline: 1px solid black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .millionTable .head{
 	position: relative;
@@ -93,5 +99,4 @@
 }
 .millionTable .filters > *{
   margin: 10px 20px;
-
 }
