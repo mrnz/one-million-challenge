@@ -1,6 +1,8 @@
 # Generate a list of one million books - The JavaScript Challenge
 
-[Vanilla JavaScript](http://vanilla-js.com/) solution
+[Vanilla JavaScript](http://vanilla-js.com/) ES6 solution
+
+Please, use latest version node and chrome or mozilla.
 
 ## Description
 
