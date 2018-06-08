@@ -1,14 +1,18 @@
 {
-  "name": "casumo",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.14.0"
-  }
+    "name": "casumo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.14.0"
+    },
+    "devDependencies": {
+        "eslint": "^4.12.1",
+        "eslint-config-eslint": "^4.0.0"
+    }
 }

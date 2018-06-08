@@ -1,32 +1,18 @@
-'use strict'
-var generators = require('./generators'),
-		getAuthor = generators.authorGenerator(),
-		getBookTilte = 	generators.bookTitleGenerator(),
-		getBookGenre = 	generators.bookGenreGenerator(),
-		getDate = generators.dateGenerator();
+'use strict';
 
-module.exports = function() {
+const generators = require('./generators');
+const getAuthor = generators.authorGenerator,
+    getBookTilte = generators.bookTitleGenerator,
+    getBookGenre = generators.bookGenreGenerator,
+    getDate = generators.dateGenerator;
 
-	return function( number ) {
-		
-		class Book {
+class Book {
+    constructor() {
+        this.author = getAuthor();
+        this.title = getBookTilte();
+        this.genre = getBookGenre();
+        this.published = getDate();
+    }
+}
 
-		  constructor() {
-
-		    this.author = getAuthor.next().value;
-		    
-		    this.title = getBookTilte.next().value;
-		    
-		    this.genre = getBookGenre.next().value;
-
-		    this.published = getDate.next().value;;
-
-		  }
-		 
-		};
-		
-		return Array( number ).fill().map( x => new Book() );
-
-	};
-	
-};
+module.exports = () => number => Array(number).fill().map(() => new Book());

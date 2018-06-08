@@ -34,4 +34,4 @@ To start application type:
 
 then go to: 
 
-``` http://localhost:8006/ ```
+``` http://localhost:8007/ ```

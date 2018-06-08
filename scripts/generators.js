@@ -1,75 +1,59 @@
-'use strict'
+'use strict';
 
-var maleNames = require('fs').readFileSync(__dirname+'/../data/maleNames.txt').toString().split('\n'),
-		lastnames = require('fs').readFileSync(__dirname+'/../data/lastnames.txt').toString().split('\n'),
-		femaleNames = require('fs').readFileSync(__dirname+'/../data/femaleNames.txt').toString().split('\n'),
-		bookGenres = require('fs').readFileSync(__dirname+'/../data/bookGenres.txt').toString().split('\n'),
-		nouns = require('fs').readFileSync(__dirname+'/../data/nouns.txt').toString().split('\n'),
-		adjectives = require('fs').readFileSync(__dirname+'/../data/adjectives.txt').toString().split('\n');
+const maleNames = require('fs').readFileSync(`${__dirname}/../data/maleNames.txt`).toString().split('\n'),
+    lastnames = require('fs').readFileSync(`${__dirname}/../data/lastnames.txt`).toString().split('\n'),
+    femaleNames = require('fs').readFileSync(`${__dirname}/../data/femaleNames.txt`).toString().split('\n'),
+    bookGenres = require('fs').readFileSync(`${__dirname}/../data/bookGenres.txt`).toString().split('\n'),
+    nouns = require('fs').readFileSync(`${__dirname}/../data/nouns.txt`).toString().split('\n'),
+    adjectives = require('fs').readFileSync(`${__dirname}/../data/adjectives.txt`).toString().split('\n'),
+    maleListLength = maleNames.length,
+    lastnamesLength = lastnames.length,
+    femaleNamesLength = femaleNames.length,
+    nounsLength = nouns.length,
+    adjectivesLength = adjectives.length,
+    forms = [
+        () => `${adjectives[parseInt(Math.random() * adjectivesLength, 10)]} ${nouns[parseInt(Math.random() * nounsLength, 10)]}`,
+        () => `The ${adjectives[parseInt(Math.random() * adjectivesLength, 10)]} of ${nouns[parseInt(Math.random() * nounsLength, 10)]}`,
+        () => `${nouns[parseInt(Math.random() * nounsLength, 10)]} of ${nouns[parseInt(Math.random() * nounsLength, 10)]}`,
+        () => `The ${nouns[parseInt(Math.random() * nounsLength, 10)]} 's ${nouns[parseInt(Math.random() * nounsLength, 10)]}`,
+        () => `The ${nouns[parseInt(Math.random() * nounsLength, 10)]} of the ${nouns[parseInt(Math.random() * nounsLength, 10)]}`,
+        () => `${nouns[parseInt(Math.random() * nounsLength, 10)]} in the ${nouns[parseInt(Math.random() * nounsLength, 10)]}`
+    ];
+
+
 
 module.exports = {
 
-	/* GENERATE AUTHOR - OBJECT */
-	authorGenerator : function* (){
+    /* GENERATE AUTHOR - OBJECT */
+    authorGenerator() {
+        let name;
+        const gender = ['M', 'F'][Math.round(Math.random())];
 
-		var maleListLength = maleNames.length,
-				lastnamesLength = lastnames.length,
-				femaleNamesLength = femaleNames.length;
+        if (gender === 'M') {
+            name = maleNames[parseInt(Math.random() * maleListLength, 10)];
+        } else if (gender === 'F') {
+            name = femaleNames[parseInt(Math.random() * femaleNamesLength, 10)];
+        }
 
-		while(true){
-			let name,
-					gender = ['M','F'][ Math.round( Math.random()) ];
+        name += ` ${lastnames[parseInt(Math.random() * lastnamesLength, 10)]}`;
+        return {
+            name,
+            gender
+        };
+    },
 
-			if( gender === 'M' ){
-				name = 	maleNames[parseInt( Math.random() * maleListLength )];
-			}else if(  gender === 'F' ){
-				name = femaleNames[parseInt( Math.random() * femaleNamesLength )];
-			}
-			name += ' ' + lastnames[parseInt( Math.random() * lastnamesLength )];
-			yield {
-				name,
-				gender
-			}
-		}
-	},
+    /* GENERATE BOOK TITLE - STRING */
+    bookTitleGenerator: () => forms[parseInt(Math.random() * forms.length, 10)](),
 
-	/* GENERATE BOOK TITLE - STRING */ 
-	bookTitleGenerator: function* (){
-		
-		var forms,
-				nounsLength = nouns.length,
-				adjectivesLength = adjectives.length;
-				
-		forms = [
-			() => adjectives[parseInt( Math.random() * adjectivesLength )] + ' ' + nouns[parseInt( Math.random() * nounsLength )],
-			() => 'The ' + adjectives[parseInt( Math.random() * adjectivesLength )] + ' of ' + nouns[parseInt( Math.random() * nounsLength )],
-			() => nouns[parseInt( Math.random() * nounsLength )] + ' of ' + nouns[parseInt( Math.random() * nounsLength )],
-			() => 'The ' + nouns[parseInt( Math.random() * nounsLength )] + '\'s ' + nouns[parseInt( Math.random() * nounsLength )],
-			() => 'The ' + nouns[parseInt( Math.random() * nounsLength )] + ' of the ' + nouns[parseInt( Math.random() * nounsLength )],
-			() => nouns[parseInt( Math.random() * nounsLength )] + ' in the ' + nouns[parseInt( Math.random() * nounsLength )]
-		];
+    /* GENERATE BOOK GENRE - STRING */
+    bookGenreGenerator: () => bookGenres[parseInt(Math.random() * bookGenres.length, 10)],
 
-		while(true){
-			yield forms[parseInt( Math.random() * forms.length )]();
-		}
+    /* GENERATE DATE - DATE OBJECT */
+    dateGenerator: () => {
+        const start = new Date(1200, 0, 1),
+            end = new Date();
 
-	},
-
-	/* GENERATE BOOK GENRE - STRING */ 
-	bookGenreGenerator: function* (){
-		var bookGenresLength = bookGenres.length;
-		while(true){
-			yield bookGenres[parseInt( Math.random() * bookGenresLength )];
-		}
-	},
-
-	/* GENERATE DATE - DATE OBJECT */
-	dateGenerator : function* () {
-		var start = new Date(1200,0,1);
-		var end = new Date();
-		while(true){
-			yield new Date(start.getTime() + Math.random() * ( end.getTime() - start.getTime() ) ).getTime();
-		}
-	}
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).getTime();
+    }
 
 };
